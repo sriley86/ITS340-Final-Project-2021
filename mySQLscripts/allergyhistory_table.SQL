@@ -1,3 +1,4 @@
+/* its 340 - Spring 2021*/
 CREATE SCHEMA IF NOT EXISTS genmedhis;
 use genmedhis;
 drop table if exists allergyhistorytable;
