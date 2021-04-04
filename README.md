@@ -73,10 +73,10 @@ Develop an application that interviews a patient for some general medical histor
 
     Patient Table (patient demographics)
     CREATE TABLE `patienttable` (
-    `PatientID` int(11) NOT NULL AUTO_INCREMENT, 
-    `PtLastName` varchar(128) DEFAULT NULL, 
-    `PtPreviousLastName` varchar(128) DEFAULT NULL, 
-    `PtFirstName` varchar(128) DEFAULT NULL, 
+    `PatientID` int(11) NOT NULL AUTO_INCREMENT,
+    `FirstName` varchar(128) DEFAULT NULL, 
+    `MiddleInitial` varchar(4) DEFAULT NULL, 
+    `LastName` varchar(128) DEFAULT NULL, 
     `HomeAddress1` varchar(128) DEFAULT NULL, 
     `HomeAddress2` varchar(128) DEFAULT NULL,
     `HomeCity` varchar(128) DEFAULT NULL, 
@@ -84,23 +84,25 @@ Develop an application that interviews a patient for some general medical histor
     `HomeZip` varchar(15) DEFAULT NULL,
     `Country` varchar(75) DEFAULT NULL,
     `Citizenship` varchar(75) DEFAULT NULL, 
-    `PtHomePhone` varchar(14) DEFAULT NULL, 
-    `EmergencyPhoneNumber` varchar(14) DEFAULT NULL, `EmailAddress` varchar(128) DEFAULT NULL,
-    `PtSS#` varchar(12) DEFAULT NULL,
+    `HomePhone` varchar(14) DEFAULT NULL, 
+    `EmergencyPhoneNumber` varchar(14) DEFAULT NULL, 
+    `EmailAddress` varchar(128) DEFAULT NULL,
+    `SS#` varchar(12) DEFAULT NULL,
     `DOB` datetime DEFAULT NULL,
-    `Gender` varchar(50) DEFAULT NULL 
+    `Gender` varchar(50) DEFAULT NULL, 
     `EthnicAssociation` varchar(75) DEFAULT NULL, 
     `MaritalStatus` varchar(25) DEFAULT NULL, 
+    `PreviousLastName` varchar(128) DEFAULT NULL, 
     `CurrentPrimaryHCPId` varchar(128) DEFAULT NULL, 
     `Active` tinyint(1) DEFAULT '1',
     `Comments` varchar(254) DEFAULT NULL, 
     `SubscriberRelationship` varchar(10) DEFAULT NULL,
     `NextOfKin` varchar(128) DEFAULT NULL,
-    `PtMiddleInitial` varchar(4) DEFAULT NULL, 
-    `NextOfKinRelationshipToPatient` varchar(50) DEFAULT NULL, PRIMARY KEY (`PatientID`),
-    KEY `I_PtLastFirstName` (`PtLastName`,`PtFirstName`),
-    KEY `I_HomePhone` (`PtHomePhone`),
-    KEY `I_SSN` (`PtSS#`)
+    `NextOfKinRelationshipToPatient` varchar(50) DEFAULT NULL, 
+    PRIMARY KEY (`PatientID`),
+    KEY `I_LastFirstName` (`LastName`,`FirstName`),
+    KEY `I_HomePhone` (`HomePhone`),
+    KEY `I_SSN` (`SS#`)
     );
 
     Allergy History
@@ -133,4 +135,70 @@ Develop an application that interviews a patient for some general medical histor
     `deleted` tinyint(1) DEFAULT '0',
     PRIMARY KEY (`GeneralMedicalHistoryID`),
     KEY `GeneralMedHxPatientIDIndex` (`PatientID`)
+    );
+
+Extra Forms and Database Tables for Teams of 3 People and Extra Credit ITS 340
+
+Teams of three must implement Family History and Immunization History
+
+    Family History  
+
+    CREATE TABLE `familyhistorytable` (
+    `FamilyID` int(11) NOT NULL AUTO_INCREMENT, 
+    `PatientID` int(11) DEFAULT NULL,
+    `Name` varchar(50) DEFAULT NULL,
+    `Relation` varchar(50) DEFAULT NULL,
+    `Alive` tinyint(1) DEFAULT '0',
+    `Lives with patient` tinyint(1) DEFAULT '0', 
+    `MajorDisorder` varchar(254) DEFAULT NULL, 
+    `SpecificTypeDisorder` varchar(254) DEFAULT NULL, 
+    `DisorderHRF` tinyint(1) DEFAULT '0',
+    `deleted` tinyint(1) DEFAULT '0',
+    PRIMARY KEY (`FamilyID`),
+    KEY `I_PatientID` (`PatientID`)
+    )
+    Immunization History
+
+    CREATE TABLE `immunizationshistorytable` ( 
+    `ImmunizationsID` int(11) NOT NULL AUTO_INCREMENT, 
+    `PatientID` int(11) DEFAULT NULL,
+    `Vaccine` varchar(128) DEFAULT NULL, 
+    `ImmunizationDate` date DEFAULT NULL, 
+    `ExperationDate` date DEFAULT NULL,
+    `Delivery` varchar(128) DEFAULT NULL,
+    `Comments` varchar(254) DEFAULT NULL,
+    `HCPId` int(11) DEFAULT NULL,
+    `deleted` tinyint(1) DEFAULT '0',
+    PRIMARY KEY (`ImmunizationsID`),
+    KEY `I_PatientID` (`PatientID`)
+    );
+
+Project Extra Credit 15 pts: Medication/Prescription table and Forms
+
+    (Includes form to display all prescriptions and enter/edit/discontinue medications. 
+    Include buttons to show ALL medications both current and past and button (the default view) 
+    to show only current medications. 
+    Check the medication end date to see if a medication has been discontinued.)
+
+    CREATE TABLE `patientmedicationstable` ( 
+    `MedicationID` int(11) NOT NULL AUTO_INCREMENT, 
+    `CurrentMedicationID` int(11) DEFAULT NULL, 
+    `PatientID` int(11) DEFAULT NULL,
+    `Medication` varchar(254) DEFAULT NULL, 
+    `PrescriptionQuantity` varchar(50) DEFAULT NULL, 
+    `PrescriptionQuantityUnits` varchar(50) DEFAULT NULL,
+    `Refills` int(11) DEFAULT NULL,
+    `RefillPeriod` varchar(50) DEFAULT NULL,
+    `Generic` tinyint(1) DEFAULT '0',
+    `PrescriptionHCP` int(11) DEFAULT NULL, 
+    `PrescriptionDate` datetime DEFAULT NULL, 
+    `PharmacyID` int(11) DEFAULT NULL,
+    `deleted` tinyint(1) DEFAULT '0',
+    `Instructions` varchar(1024) DEFAULT NULL, 
+    `PrescriptionMedsAmt` varchar(50) DEFAULT NULL, 
+    `PrescriptionMedsUnit` varchar(50) DEFAULT NULL, 
+    'MedicationStartDate' date DEFAULT NULL, 
+    'MedicationEndDate' date DEFAULT NULL, 
+    PRIMARY KEY (`PrescriptionID`),
+    KEY `I_PatientID` (`PatientID`)
     );
