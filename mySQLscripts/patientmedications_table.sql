@@ -19,8 +19,8 @@ CREATE TABLE `patientmedicationstable` (
 `Instructions` varchar(1024) DEFAULT NULL, 
 `PrescriptionMedsAmt` varchar(50) DEFAULT NULL, 
 `PrescriptionMedsUnit` varchar(50) DEFAULT NULL, 
-'MedicationStartDate' date DEFAULT NULL, 
-'MedicationEndDate' date DEFAULT NULL, 
-PRIMARY KEY (`PrescriptionID`),
+`MedicationStartDate` date DEFAULT NULL, 
+`MedicationEndDate` date DEFAULT NULL, 
+PRIMARY KEY (`MedicationID`),
 KEY `I_PatientID` (`PatientID`)
 );
