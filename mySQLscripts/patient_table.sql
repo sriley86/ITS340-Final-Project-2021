@@ -14,7 +14,7 @@ CREATE TABLE `patienttable` (
 `Zip` varchar(15) DEFAULT NULL,
 `Country` varchar(75) DEFAULT NULL,
 `Citizenship` varchar(75) DEFAULT NULL, 
-`HomePhone` varchar(14) DEFAULT NULL, 
+`Phone` varchar(14) DEFAULT NULL, 
 `EmergencyPhoneNumber` varchar(14) DEFAULT NULL, 
 `EmailAddress` varchar(128) DEFAULT NULL,
 `SS#` varchar(12) DEFAULT NULL,
