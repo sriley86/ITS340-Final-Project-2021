@@ -1,0 +1,83 @@
+//Patient Demographics fields
+String FirstName
+String MiddleInitial
+String LastName 
+String Address1
+String Address2
+String City
+String StateProvinceRegion
+String Zip
+String Country
+String Citizenship
+String Phone
+String EmergencyPhoneNumber
+String EmailAddress
+String SSNumber
+String DOB
+String Gender
+String EthnicAssociation 
+String MaritalStatus 
+String PreviousLastName 
+String CurrentPrimaryHCPId 
+String Comments 
+String SubscriberRelationship
+String NextOfKin
+String NextOfKinRelationshipToPatient 
+
+
+//General Medical History fields
+String Tobacco
+String TobaccoQuantity
+String Tobaccoduraton
+String Alcohol
+String AlcoholQuantity
+String Alcoholduration
+String Drug
+String DrugType
+String Drugduration 
+String BloodType
+String Rh
+
+//Allergy fields
+String Allergen
+String AllergyStartDate
+String AllergyEndDate
+String AllergyDescription
+
+//Familiy History fields 
+String Name
+String Relation
+int Alive
+int Lives with patient
+String MajorDisorder
+String SpecificTypeDisorder
+int DisorderHRF
+
+
+//immunization fields
+int ImmunizationsID
+String Vaccine 
+String ImmunizationDate 
+String ExperationDate
+String Delivery
+String Comments
+int HCPId
+
+//medications fields 
+int MedicationID
+int CurrentMedicationID
+Int PatientID
+String Medication
+String PrescriptionQuantity
+String PrescriptionQuantityUnits
+int Refills
+String RefillPeriod
+int Generic
+int PrescriptionHCP 
+String PrescriptionDate
+Int PharmacyID
+String Instructions 
+String PrescriptionMedsAmt
+String PrescriptionMedsUnit
+String MedicationStartDate
+String MedicationEndDate 
