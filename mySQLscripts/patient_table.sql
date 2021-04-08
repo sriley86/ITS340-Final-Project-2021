@@ -10,15 +10,15 @@ CREATE TABLE `patienttable` (
 `Address1` varchar(128) DEFAULT NULL, 
 `Address2` varchar(128) DEFAULT NULL,
 `City` varchar(128) DEFAULT NULL, 
-`State/Province/Region` varchar(50) DEFAULT NULL,
+`State` varchar(50) DEFAULT NULL,
 `Zip` varchar(15) DEFAULT NULL,
 `Country` varchar(75) DEFAULT NULL,
 `Citizenship` varchar(75) DEFAULT NULL, 
 `Phone` varchar(14) DEFAULT NULL, 
 `EmergencyPhoneNumber` varchar(14) DEFAULT NULL, 
 `EmailAddress` varchar(128) DEFAULT NULL,
-`SS#` varchar(12) DEFAULT NULL,
-`DOB` datetime DEFAULT NULL,
+`SSNumber` varchar(12) DEFAULT NULL,
+`DOB` varchar(12) DEFAULT NULL,
 `Gender` varchar(50) DEFAULT NULL, 
 `EthnicAssociation` varchar(75) DEFAULT NULL, 
 `MaritalStatus` varchar(25) DEFAULT NULL, 
@@ -32,5 +32,5 @@ CREATE TABLE `patienttable` (
 PRIMARY KEY (`PatientID`),
 KEY `I_LastFirstName` (`LastName`,`FirstName`),
 KEY `I_Phone` (`Phone`),
-KEY `I_SSN` (`SS#`)
+KEY `I_SSN` (`SSNumber`)
 );
